@@ -24,6 +24,7 @@ public class Phrase extends AbstractEntity{
     private String text;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "phrase")
