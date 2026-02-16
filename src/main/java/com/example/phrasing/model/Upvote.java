@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @Entity
 @Table(name = "upvotes")
-public class Upvote {
+public class Upvote extends  AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
