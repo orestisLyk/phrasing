@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -13,11 +15,15 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @Entity
 @Table(name = "upvotes")
-public class Upvote extends  AbstractEntity {
+public class Upvote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @CreatedDate
+    @Column(nullable = false, updatable = false, name = "created_at", columnDefinition = "DATETIME")
+    private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id",  nullable = false)
